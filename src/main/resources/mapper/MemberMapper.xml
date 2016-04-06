@@ -2,8 +2,52 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ynyes.cqhome.toy.dao.MemberDao">
+	<insert id="save" parameterType="Member" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO 'member'
+		('number','username','password','regist_time','last_login_time','last_login_ip','is_enable',
+		'sort_id','pay_password','nickname','head_img','identity','sex','age','mobile','email','real_name','birthday',
+		'balance','forst_balance','total_consume','level_number'
+		) VALUES (
+		#{number},#{username},#{password},#{resigtTime},#{lastLoginTime},#{lastLoginIp},#{isEnable},#{sortId},
+		#{payPassword},#{nickname},#{headImg},#{identity},#{sex},#{age},#{mobile},#{email},#{real_name},#{birthday},
+		#{balance},#{forstBalance},#{totalConsume},#{levelNumber}
+		)
+	</insert>
+
+	<delete id="delete" parameterType="Long">
+		DELETE FROM member WHERE (id =
+		#{id})
+	</delete>
+
+	<update id="update" parameterType="Member">
+		UPDATE member SET
+		'number' = #{number},'username' = #{password},'regist_time' =
+		#{registTime},'last_login_time' = #{lastLoginTime},
+		'last_login_ip' = #{lastLoginIp},'is_enable' = #{isEnable},'sort_id' =
+		#{sortId},'pay_password' = #{payPassword},
+		'nickname' = #{nickname},'head_img' = #{headImg},'identity' = #{identity},'sex'
+		= #{sex},'age' = #{age},
+		'mobile' = #{mobile},'email' = #{email},'real_name' = #{realName},'birthday' =
+		#{birthday},'balance' = #{balance},
+		'forst_balance' = #{forstBalance},'total_consume' = #{totalConsume},'level_number' =
+		#{levelNumber}
+	</update>
+
 	<select id="findOne" parameterType="Long" resultType="Member">
 		SELECT *
-		FROM member WHERE id = #{id}
+		FROM member WHERE (id = #{id})
+	</select>
+
+	<select id="findAll" resultType="Member">
+		SELECT * FROM member
+	</select>
+
+	<select id="findByNumber" resultType="Member">
+		SELECT * FROM member WHERE (number = #{member})
+	</select>
+	
+	<select id="findByUsernameAndPassword" resultType="Member">
+		SELECT * FROM member WHERE (username = #{username} and password = #{password})
 	</select>
 </mapper>

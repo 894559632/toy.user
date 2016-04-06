@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<!-- 引入外部资源配置文件 -->
-	<!-- <properties resource="jdbc.properties" /> -->
+	<properties resource="jdbc.properties" />
 
 	<settings>
 		<!-- 开启驼峰自动映射 -->
@@ -29,7 +29,6 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="./mapper/MemberMapper.xml" />
-		<mapper resource="./mapper/MemberLevelMapper.xml" />
+		<mapper resource="mapper/MemberMapper.xml" />
 	</mappers>
 </configuration>
